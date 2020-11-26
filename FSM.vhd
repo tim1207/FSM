@@ -15,58 +15,58 @@ BEGIN
     BEGIN 
     if clock='1' then
 		IF reset = '1' THEN 
-           y_next <= Start;
-			  temp<="000";
+           		y_next <= Start;
+			temp<="000";
       END IF ; 
 			
         CASE y_present IS 
             WHEN Start=> 
                 IF w = '0' THEN 
                     y_next <= Start;
-						  temp<="000";
+		    temp<="000";
                 ELSE 
                     y_next <= S1 ;
-						  temp<="001";
+		    temp<="001";
                 END IF ; 
             WHEN S1 => 
                 IF w = '0' THEN 
                     y_next <= S2a; 
-						  temp<="010";
+		    temp<="010";
                 ELSE 
                     y_next <= S2b ; 
-						  temp<="011";
+		    temp<="011";
                 END IF ;
             WHEN S2a=> 
                 IF w = '0' THEN 
                     y_next <= S3;
-						  temp<="100";
+		    temp<="100";
                 ELSE 
                     y_next <= S3 ;
-						  temp<="100";
+		    temp<="100";
                 END IF ; 
             WHEN S2b => 
                 IF w = '0' THEN 
                     y_next <= S3; 
-						  temp<="100";
+		    temp<="100";
                 ELSE 
                     y_next <= S3 ; 
-						  temp<="100";
+		    temp<="100";
                 END IF ;
             WHEN S3=> 
                 IF w = '0' THEN 
                     y_next <= S1;
-						  temp<="001";
+		    temp<="001";
                 ELSE 
                     y_next <= S4 ;
-						  temp<="101";
+		    temp<="101";
                 END IF ;  
-				WHEN S4=> 
+	    WHEN S4=> 
                 IF w = '0' THEN 
                     y_next <= S4;
-						  temp<="101";
+		    temp<="101";
                 ELSE 
                     y_next <= S4 ;
-						  temp<="101";
+		    temp<="101";
                 END IF ;  
 		 END CASE ;
 	 END IF ;  
